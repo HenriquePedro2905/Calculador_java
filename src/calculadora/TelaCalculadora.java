@@ -10,6 +10,12 @@ package calculadora;
  */
 public class TelaCalculadora extends javax.swing.JFrame {
 
+    double firstNumber;
+    double secondNumber;
+    double result;
+    String operation;
+    
+    
     /**
      * Creates new form TelaCalculadora
      */
@@ -60,6 +66,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonMemoryMore.setBackground(new java.awt.Color(253, 73, 0));
         buttonMemoryMore.setText("M+");
         buttonMemoryMore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -67,6 +74,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonMemoryLess.setBackground(new java.awt.Color(253, 73, 0));
         buttonMemoryLess.setText("M-");
         buttonMemoryLess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -74,6 +82,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonMemoryReturn.setBackground(new java.awt.Color(253, 73, 0));
         buttonMemoryReturn.setText("MR");
         buttonMemoryReturn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,6 +90,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonMemoryClear.setBackground(new java.awt.Color(253, 73, 0));
         buttonMemoryClear.setText("MC");
         buttonMemoryClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -120,6 +130,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonNine.setBackground(new java.awt.Color(0, 0, 0));
         buttonNine.setText("9");
         buttonNine.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -127,6 +138,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonSeven.setBackground(new java.awt.Color(0, 0, 0));
         buttonSeven.setText("7");
         buttonSeven.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,6 +146,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonEight.setBackground(new java.awt.Color(0, 0, 0));
         buttonEight.setText("8");
         buttonEight.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,6 +162,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonSix.setBackground(new java.awt.Color(0, 0, 0));
         buttonSix.setText("6");
         buttonSix.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -156,6 +170,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonFive.setBackground(new java.awt.Color(0, 0, 0));
         buttonFive.setText("5");
         buttonFive.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -163,6 +178,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonFour.setBackground(new java.awt.Color(0, 0, 0));
         buttonFour.setText("4");
         buttonFour.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,6 +194,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonOne.setBackground(new java.awt.Color(0, 0, 0));
         buttonOne.setText("1");
         buttonOne.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -193,6 +210,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonTwo.setBackground(new java.awt.Color(0, 0, 0));
         buttonTwo.setText("2");
         buttonTwo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -200,6 +218,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonThree.setBackground(new java.awt.Color(0, 0, 0));
         buttonThree.setText("3");
         buttonThree.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -207,6 +226,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonPoint.setBackground(new java.awt.Color(0, 0, 0));
         buttonPoint.setText(".");
         buttonPoint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,6 +234,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
             }
         });
 
+        buttonZero.setBackground(new java.awt.Color(0, 0, 0));
         buttonZero.setText("0");
         buttonZero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -330,6 +351,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMemoryMoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMemoryMoreActionPerformed
@@ -365,15 +387,21 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonClearActionPerformed
 
     private void buttonNineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNineActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonNine.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonNineActionPerformed
 
     private void buttonSevenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSevenActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonSeven.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonSevenActionPerformed
 
     private void buttonEightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEightActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonEight.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonEightActionPerformed
 
     private void buttonLessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLessActionPerformed
@@ -381,15 +409,21 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonLessActionPerformed
 
     private void buttonSixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSixActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonSix.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonSixActionPerformed
 
     private void buttonFiveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFiveActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonFive.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonFiveActionPerformed
 
     private void buttonFourActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonFourActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonFour.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonFourActionPerformed
 
     private void buttonSumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSumActionPerformed
@@ -397,7 +431,9 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonSumActionPerformed
 
     private void buttonOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOneActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonOne.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonOneActionPerformed
 
     private void buttonEquausActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEquausActionPerformed
@@ -405,11 +441,15 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonEquausActionPerformed
 
     private void buttonTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTwoActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonTwo.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonTwoActionPerformed
 
     private void buttonThreeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonThreeActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonThree.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonThreeActionPerformed
 
     private void buttonPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPointActionPerformed
@@ -417,7 +457,9 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPointActionPerformed
 
     private void buttonZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonZeroActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonZero.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonZeroActionPerformed
 
     private void textScreenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textScreenActionPerformed
