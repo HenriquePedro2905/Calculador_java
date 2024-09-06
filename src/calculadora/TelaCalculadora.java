@@ -4,12 +4,20 @@
  */
 package calculadora;
 
+import java.awt.Component;
+import java.awt.Container;
+import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JButton;
+
 /**
  *
  * @author 23040
  */
 public class TelaCalculadora extends javax.swing.JFrame {
 
+    double memory;
     double firstNumber;
     double secondNumber;
     double result;
@@ -21,6 +29,25 @@ public class TelaCalculadora extends javax.swing.JFrame {
      */
     public TelaCalculadora() {
         initComponents();
+        
+        List<JButton> buttons = getButtons(getContentPane());
+        for(JButton button : buttons){
+            button.setFont(new Font("Arial", Font.PLAIN, 30));
+        }
+        
+        textScreen.setFont(new Font("Arial", Font.PLAIN, 30));
+    }
+    
+    public List<JButton> getButtons(Container container){
+        List<JButton> buttons = new ArrayList<>();
+        Component[] components = container.getComponents();
+        
+        for(Component component : components){
+            if(component instanceof JButton){
+                buttons.add((JButton) component);
+            }
+        }
+        return buttons;
     }
 
     /**
@@ -355,11 +382,17 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonMemoryMoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMemoryMoreActionPerformed
-        // TODO add your handling code here:
+        double memoryResult;
+        String resultFomatted;
+        memoryResult = firstNumber + memory ;
+        resultFomatted = String.format("%.2f", memoryResult);
+        textScreen.setText(resultFomatted);
+        memory = memoryResult;
     }//GEN-LAST:event_buttonMemoryMoreActionPerformed
 
     private void buttonMemoryReturnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMemoryReturnActionPerformed
-        // TODO add your handling code here:
+        String resultFomatted = Double.toString(memory);
+        textScreen.setText(resultFomatted);
     }//GEN-LAST:event_buttonMemoryReturnActionPerformed
 
     private void buttonMemoryLessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMemoryLessActionPerformed
@@ -367,23 +400,42 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMemoryLessActionPerformed
 
     private void buttonMemoryClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMemoryClearActionPerformed
-        // TODO add your handling code here:
+        memory = 0;
+        textScreen.setText("");
     }//GEN-LAST:event_buttonMemoryClearActionPerformed
 
     private void buttonMoreLessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMoreLessActionPerformed
-        // TODO add your handling code here:
+        if(operation != null){
+            secondNumber = Double.parseDouble(textScreen.getText());
+            secondNumber = secondNumber * (-1);
+            String teste = Double.toString(secondNumber);
+            textScreen.setText(teste);
+        }else{
+            firstNumber = Double.parseDouble(textScreen.getText());
+            firstNumber = firstNumber * (-1);
+            String teste = Double.toString(firstNumber);
+            textScreen.setText(teste);
+        }
     }//GEN-LAST:event_buttonMoreLessActionPerformed
 
     private void buttonDivisionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonDivisionActionPerformed
-        // TODO add your handling code here:
+        if(!textScreen.getText().equals("")){
+            firstNumber = Double.parseDouble(textScreen.getText());
+            textScreen.setText("");
+            operation = "/";
+        }
     }//GEN-LAST:event_buttonDivisionActionPerformed
 
     private void buttonMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMultiActionPerformed
-        // TODO add your handling code here:
+        if(!textScreen.getText().equals("")){
+            firstNumber = Double.parseDouble(textScreen.getText());
+            textScreen.setText("");
+            operation = "*";
+        }
     }//GEN-LAST:event_buttonMultiActionPerformed
 
     private void buttonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonClearActionPerformed
-        // TODO add your handling code here:
+        textScreen.setText("");
     }//GEN-LAST:event_buttonClearActionPerformed
 
     private void buttonNineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNineActionPerformed
@@ -405,7 +457,11 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonEightActionPerformed
 
     private void buttonLessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonLessActionPerformed
-        // TODO add your handling code here:
+        if(!textScreen.getText().equals("")){
+            firstNumber = Double.parseDouble(textScreen.getText());
+            textScreen.setText("");
+            operation = "-";
+        }
     }//GEN-LAST:event_buttonLessActionPerformed
 
     private void buttonSixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSixActionPerformed
@@ -427,7 +483,11 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonFourActionPerformed
 
     private void buttonSumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSumActionPerformed
-        // TODO add your handling code here:
+        if(!textScreen.getText().equals("")){
+            firstNumber = Double.parseDouble(textScreen.getText());
+            textScreen.setText("");
+            operation = "+";
+        }
     }//GEN-LAST:event_buttonSumActionPerformed
 
     private void buttonOneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonOneActionPerformed
@@ -437,7 +497,38 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonOneActionPerformed
 
     private void buttonEquausActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEquausActionPerformed
-        // TODO add your handling code here:
+        if(operation != null){
+            String resultFomatted;
+            secondNumber = Double.parseDouble(textScreen.getText());
+                switch (operation) {
+                case "+":
+                    result = firstNumber + (secondNumber);
+                    resultFomatted = String.format("%.2f", result);
+                    textScreen.setText(resultFomatted);
+                    memory = result;
+                    break;
+                case "-":
+                    result = firstNumber - secondNumber;
+                    resultFomatted = String.format("%.2f", result);
+                    textScreen.setText(resultFomatted);
+                    memory = result;
+                    break;
+                case "*":
+                    result = firstNumber * secondNumber;
+                    resultFomatted = String.format("%.2f", result);
+                    textScreen.setText(resultFomatted);
+                    memory = result;
+                    break;
+                case "/":
+                    result = firstNumber / secondNumber;
+                    resultFomatted = String.format("%.4f", result);
+                    textScreen.setText(resultFomatted);
+                    memory = result;
+                    break;
+                default:
+                    throw new AssertionError();
+                }
+        }    
     }//GEN-LAST:event_buttonEquausActionPerformed
 
     private void buttonTwoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonTwoActionPerformed
@@ -453,7 +544,9 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonThreeActionPerformed
 
     private void buttonPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPointActionPerformed
-        // TODO add your handling code here:
+        String input;
+        input = textScreen.getText() + buttonPoint.getText();
+        textScreen.setText(input);
     }//GEN-LAST:event_buttonPointActionPerformed
 
     private void buttonZeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonZeroActionPerformed
