@@ -396,7 +396,12 @@ public class TelaCalculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonMemoryReturnActionPerformed
 
     private void buttonMemoryLessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMemoryLessActionPerformed
-        // TODO add your handling code here:
+        double memoryResult;
+        String resultFomatted;
+        memoryResult = firstNumber - memory ;
+        resultFomatted = String.format("%.2f", memoryResult);
+        textScreen.setText(resultFomatted);
+        memory = memoryResult;
     }//GEN-LAST:event_buttonMemoryLessActionPerformed
 
     private void buttonMemoryClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMemoryClearActionPerformed
