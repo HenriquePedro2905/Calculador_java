@@ -400,7 +400,7 @@ public class TelaCalculadora extends javax.swing.JFrame {
         double memoryResult;
         String resultFomatted;
         double memoryMore = Double.parseDouble(textScreen.getText());
-        memoryResult = memoryMore - memory ;
+        memoryResult = memory - memoryMore ;
         resultFomatted = String.format("%.2f", memoryResult);
         textScreen.setText(resultFomatted);
         memory = memoryResult;
